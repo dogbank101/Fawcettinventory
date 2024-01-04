@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fawcett B&M Inventory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: navy;
+            color: white;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        #output, #output2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fawcett B&M Inventory</h1>
+
+    <div id="loginSection">
+        <!-- Login Section -->
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div id="mainContent" style="display: none;">
+        <!-- Main Content Section -->
+        <!-- Create/Delete Bin Section -->
+        <div>
+            <h2>Create/Delete Bin</h2>
+            <label for="binInput">Bin:</label>
+            <input type="text" id="binInput" placeholder="Enter bin number">
+            <button onclick="createBin()">Create Bin</button>
+            <button onclick="deleteBin()">Delete Bin</button>
+        </div>
+
+        <!-- Add/Delete Product to/from Bin Section -->
+        <div>
+            <h2>Add/Delete Product to/from Bin</h2>
+            <label for="binInput2">Bin:</label>
+            <input type="text" id="binInput2" placeholder="Enter bin number">
+            <label for="productInput">Product:</label>
+            <input type="text" id="productInput" placeholder="Enter product number">
+            <button onclick="addProductToBin()">Add Product</button>
+            <button onclick="deleteProductFromBin()">Delete Product</button>
+        </div>
+
+        <!-- Lookup Product in Bin Section -->
+        <div>
+            <h2>Lookup Product in Bin</h2>
+            <label for="lookupProductInput">Product:</label>
+            <input type="text" id="lookupProductInput" placeholder="Enter product number">
+            <button onclick="lookupProductBin()">Lookup Bin</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Lookup Bin Contents Section -->
+        <div>
+            <h2>Lookup Bin Contents</h2>
+            <label for="lookupBinInput">Bin:</label>
+            <input type="text" id="lookupBinInput" placeholder="Enter bin number">
+            <button onclick="lookupBinContents()">Lookup Contents</button>
+            <div id="output2"></div>
+        </div>
+
+        <!-- Logout Section -->
+        <div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script src="inventory.js" defer></script>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'bandm' && password === '919Bayridge') {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                alert('Login successful.');
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
+        function logout() {
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('username').value = ''; // Clear the username field
+            document.getElementById('password').value = ''; // Clear the password field
+        }
+    </script>
+</body>
+</html>
